@@ -1,0 +1,119 @@
+<form class="form-horizontal" name="edit_config" action="index.php?mod=config&amp;action=save" id="edit_config" method="post">
+    <ul class="nav nav-tabs">
+      <li class="{{ general_active }}"><a href="#config-general" data-toggle="tab">General</a></li>
+      <li class="{{ email_active }}"><a href="#config-email" data-toggle="tab">Email/MMS forwarding</a></li>
+         </ul>
+	<div class="tab-content well">
+	  <div id="config-general" class="tab-pane {{ general_active }}">
+          <fieldset>
+             <div class="control-group">
+                <label class="control-label" for="auto_refresh_servers">{{ label_auto_refresh }}</label>
+                <div class="controls">
+                    <input type="text" class="input-mini" id="auto_refresh_servers" name="auto_refresh_servers" value="{{ auto_refresh_servers }}" maxlength="10" data-toggle="tooltip" title="{{ label_auto_refresh_servers }}" />&nbsp;{{ label_seconds }}
+                </div>
+            </div>
+		  </fieldset>
+		  <fieldset>
+            <legend>{{ label_settings_notification }}</legend>
+            <div class="control-group">
+                <label class="control-label" for="alert_type">{{ label_alert_type }}</label>
+                <div class="controls">
+                    <select id="alert_type" name="alert_type">
+                        <option value="status" {{ alert_type_selected_status|raw }}>{{ label_alert_type_status }}</option>
+                        <option value="offline" {{ alert_type_selected_offline|raw }}>{{ label_alert_type_offline }}</option>
+                        <option value="always" {{ alert_type_selected_always|raw }}>{{ label_alert_type_always }}</option>
+                      </select>
+                      <p class="help-block">{{ label_alert_type_description|raw }}</p>
+                </div>
+            </div>
+		  </fieldset>
+		  <fieldset>
+            <legend>{{ label_settings_log }}</legend>
+            <div class="control-group">
+				<div class="controls">
+					<label class="checkbox"><input type="checkbox" id="log_status" name="log_status[]" {{ log_status_checked|raw }} data-toggle="tooltip" title="{{ label_log_status_description }}" /> {{ label_log_status }}</label>
+				</div>
+			</div>
+            <div class="control-group">
+                <label class="control-label" for="log_retention_period">{{ label_log_retention_period }}</label>
+                <div class="controls">
+					<input type="text" class="input-mini" id="log_retention_period" name="log_retention_period" value="{{ log_retention_period }}" data-toggle="tooltip" title="{{ label_log_retention_period_description }}" />&nbsp;{{ label_log_retention_days }}
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-success" type="submit" name="general_submit">{{ label_save }}</button>
+            </div>
+		  </fieldset>
+	  </div>
+	  <div id="config-email" class="tab-pane {{ email_active }}">
+		<fieldset>
+            <legend>{{ label_settings_email }}</legend>
+            <div class="control-group">
+                <div class="controls">
+	                <label class="checkbox" for="email_status"><input type="checkbox" id="email_status" name="email_status[]" {{ email_status_checked|raw }} /> {{ label_email_status }}</label>
+                </div>
+            </div>
+            <div class="control-group">
+				<div class="controls">
+					<label class="checkbox"><input type="checkbox" id="log_email" name="log_email[]" {{ log_email_checked|raw }} /> {{ label_log_email }}</label>
+				</div>
+			</div>
+            <div class="control-group">
+                <label class="control-label" for="email_from_name">{{ label_email_from_name }}</label>
+                <div class="controls">
+                    <input type="text" data-toggle="tooltip" title="Email name sender" id="email_from_name" name="email_from_name" value="" maxlength="255" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="email_from_email">{{ label_email_from_email }}</label>
+                <div class="controls">
+                    <input type="text" id="email_from_email" data-toggle="tooltip" title="Email address sender" name="email_from_email" value="" maxlength="255" />
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+	                <label class="checkbox" for="email_smtp"><input type="checkbox" id="email_smtp" name="email_smtp[]" {{ email_smtp_checked|raw }} />{{ label_email_smtp }}</label>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="email_smtp_host">{{ label_email_smtp_host }}</label>
+                <div class="controls">
+                    <input type="text"  data-toggle="tooltip" title="SMTP host here" id="email_smtp_host" name="email_smtp_host" value="{{ email_smtp_host }}" maxlength="100" placeholder="{{ label_email_smtp_host }}" />
+                    <input type="text" class="input-small" data-toggle="tooltip" title="SMTP port" id="email_smtp_port" name="email_smtp_port" value="{{ email_smtp_port }}" maxlength="10" placeholder="{{ label_email_smtp_port }}" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="email_smtp_security">{{ label_email_smtp_security }}</label>
+                <div class="controls">
+                    <select id="email_smtp_security" name="email_smtp_security">
+                        <option value="" {{ email_smtp_security_selected_|raw }}>{{ label_email_smtp_security_none }}</option>
+                        <option value="ssl" {{ email_smtp_security_selected_ssl|raw }}>SSL</option>
+                        <option value="tls" {{ email_smtp_security_selected_tls|raw }}>TLS</option>
+					</select>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="email_smtp_username">{{ label_email_smtp_username }}</label>
+                <div class="controls">
+                    <input type="text" id="email_smtp_username" data-toggle="tooltip" title="SMTP username" name="email_smtp_username" value="{{ email_smtp_username }}" maxlength="100" placeholder="{{ label_email_smtp_noauth }}" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="email_smtp_password">{{ label_email_smtp_password }}</label>
+                <div class="controls">
+                    <input type="password" id="email_smtp_password" data-toggle="tooltip" title="SMTP password" name="email_smtp_password" value="{{ email_smtp_password }}" maxlength="100" placeholder="{{ label_email_smtp_noauth }}" />
+                </div>
+            </div>
+			<div class="control-group">
+				<div class="controls">
+					<button class="btn btn-primary show-modal" data-modal-id="testEmail">{{ label_test }}</button>
+					<input type="hidden" name="test_email" value="0" />
+				</div>
+			</div>
+            <div class="form-actions">
+                <button class="btn btn-success" type="submit" name="email_submit" >{{ label_save }}</button>
+            </div>
+        </fieldset>
+	  </div>
+	</div>
+</form>

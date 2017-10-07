@@ -1,0 +1,28 @@
+
+<div class="nav-collapse" style="padding-top:20px;">
+	  <ul class="nav">
+	  <li><a class="" style="font-weight:300;line-height:1;color:#ffffff;" href="index.php">El :: monitore</a></li>
+	  {% for item in menu %}
+	  <li  class="{{ item.active }}"><a href="{{ item.url|raw }}">{{ item.label }}</a></li>
+	  {% endfor %}
+	   </ul>
+    
+
+  <ul class="nav pull-right">
+	<li class="dropdown visible-desktop">
+	  <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ label_usermenu }} <b class="caret"></b></a>
+	  <ul class="dropdown-menu">
+		<li><a href="{{ url_profile|raw }}"><i class="icon-cog"></i>&nbsp;{{ label_profile }}</a></li>
+		<li><a href="{{ url_logout|raw }}"><i class="icon-off"></i>&nbsp;{{ label_logout }}</a></li>
+	  </ul>
+	</li>
+	<li class="hidden-desktop divider"></li>
+	<li class="hidden-desktop"><a href="{{ url_profile|raw }}">{{ label_profile }}</a></li>
+	<li class="hidden-desktop"><a href="{{ url_logout|raw }}">{{ label_logout }}</a></li>
+  </ul>
+</div>
+
+<footer class="footer navbar-fixed-bottom footerclass">
+        <p class="pull-right"><a href="#">{{ label_back_to_top }}</a></p>
+        <p class="powered" style="text-size:normal;">Elmonitore, contributed by <a href="http://andrija1987.eu" target="_blank">andrija1987</p></a> &copy; 2015
+      </footer>
